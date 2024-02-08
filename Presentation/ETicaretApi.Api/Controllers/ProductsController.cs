@@ -35,7 +35,7 @@ namespace ETicaretApi.Api.Controllers
         {
             var result = await _productReadRepository.GetByIdAsync(id);
             Console.WriteLine(result);
-            return Ok();
+            return Ok(result);
         }
     }
 }

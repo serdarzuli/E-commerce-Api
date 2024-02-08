@@ -14,7 +14,7 @@ namespace ETicaretAPI.Domain.Entities
         public string? Description { get; set; }
         public string? Address { get; set; }  //siparis bazli addressi belirleyebilelim diye Orderda adresi tanimladik , musterilerin tek tek adressi tutmayacagiz
 
-        public ICollection<Product> products { get; set; } //n-n ilisli oldugu icin 
-        public Customer Customer { get; set; } //1-n iliski 
+        public ICollection<Product>? products { get; set; } //n-n ilisli oldugu icin 
+        public Customer? Customer { get; set; } //1-n iliski 
     }
 }
