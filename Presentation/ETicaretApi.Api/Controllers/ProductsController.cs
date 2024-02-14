@@ -1,4 +1,8 @@
-﻿using ETicaretApi.Application.Repositories;
+﻿using ETicaretApi.Application.Features.Commands.CreateProduct;
+using ETicaretApi.Application.Features.Queries.GetAllProduct;
+using ETicaretApi.Application.Features.Queries.GetAllProducts;
+using ETicaretApi.Application.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,32 +14,36 @@ namespace ETicaretApi.Api.Controllers
     {
         readonly private IProductWriteRepository _productWriteRepository;
         readonly private IProductReadRepository _productReadRepository;
+        readonly private IMediator _mediator;
 
-        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository)
+        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository,IMediator mediator)
         {
             _productReadRepository = productReadRepository;
             _productWriteRepository = productWriteRepository;
-        }
-        [HttpGet]
-        //public async void Get() burada void ile yapsak service.singelton kullanmam lazim scoped'da her requstin icindeki istegi icin nesne olusturacagimizdan ve void bekleme yapmayacagindan dispose olacaktir
-
-        public async Task Get()
-        {
-            await _productWriteRepository.AddRangeAsync(new()
-            {
-
-                new() { Id = Guid.NewGuid(), Name = "Product 1", Price = 300 , Stock = 30, CreatedDate = DateTime.UtcNow},
-                new() { Id = Guid.NewGuid(), Name = "Product 2", Price = 3400 , Stock = 40, CreatedDate = DateTime.UtcNow},
-            });
-            var count = await _productWriteRepository.SaveAsync();
+            _mediator = mediator;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        [HttpGet("GetAllProduct")]
+        public async Task<IActionResult> GetAllProducts([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {
-            var result = await _productReadRepository.GetByIdAsync(id);
-            Console.WriteLine(result);
-            return Ok(result);
+            GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpGet("GetProductById/{id}")] // Correct route definition
+        public async Task<IActionResult> GetProductById([FromRoute] string id) // Accepting string id from route
+        {
+            var getByIdProductQueryRequest = new GetByIdProductQueryRequest { Id = id }; // Using string id in request object
+            GetByIdProductQueryResponse response = await _mediator.Send(getByIdProductQueryRequest);
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateProductCommandRequest createProductCommandRequest)
+        {
+            CreateProductCommandResponse response = await _mediator.Send(createProductCommandRequest);
+            return Ok(response);
         }
     }
 }

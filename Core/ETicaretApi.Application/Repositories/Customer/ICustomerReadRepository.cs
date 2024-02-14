@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ETicaretApi.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ETicaretAPI.Domain.Entities;
 
 namespace ETicaretApi.Application.Repositories //namesapce repositories.customer olmasi lazim ama biz sildik cunku hataya aliyoruz Customer entitysine erisemiyoruz
 {
