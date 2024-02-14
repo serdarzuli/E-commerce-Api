@@ -73,7 +73,10 @@ namespace ETicaretApi.Persistence.Repositories
             EntityEntry<T> entityEntry  =  Table.Update(model);
             return  entityEntry.State == EntityState.Modified;
         }
-        public async Task<int> SaveAsync() => await _context.SaveChangesAsync();
+        public async Task<int> SaveAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
 
         //Simdi yapilanmamiz olmasi gerekn ideal repository desingn pattern sekilde insa edilmis oldu
         //Next step : 

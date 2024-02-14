@@ -11,7 +11,7 @@ namespace ETicaretApi.Application.Repositories
     public interface IReadRepository<T> : IRepository<T> where T : BaseEntity
     {
         //Read ile ilgili islemler tanimlanacak , read'den kasit Select'tir baska bir sey degildir.
-        //Veritabanindan sorgu neticesinde data elde ediceksek biz buna read islemleri diycez\
+        //Veritabanindan sorgu neticesinde data elde ediceksek biz buna read islemleri diycez.
         //Read islemleri ne sekilde olabilir
         //1.Tum datalari elde etmek olabilir.
         //2.Sartli veri godnerip sarta uyan verilerin donmesini isteyebilirim. 

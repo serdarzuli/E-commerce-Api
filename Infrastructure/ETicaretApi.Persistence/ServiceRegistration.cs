@@ -25,21 +25,15 @@ namespace ETicaretApi.Persistence
             //extencion metotlari biz Presentationda ki IOC container'ina erisip oraya gerekli entengrasyonlari yapiyor olucaz  
             #endregion
             //services.AddSingleton<IProductService , ProductService>();
-
-
-            services.AddDbContext<ETicaretAPIDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
+            services.AddDbContext<ETicaretAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
             services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
             services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
             services.AddScoped<IOrderReadRepository, OrderReadRepository>();
             services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
-
-
-
-
-
         }
+
         //bu metodu tetiklemek icin program.cs'te build edicez
     }
 }

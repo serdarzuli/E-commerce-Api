@@ -14,9 +14,12 @@ namespace ETicaretAPI.Persistence
     {
         public ETicaretAPIDbContext CreateDbContext(string[] args)
         {
-            DbContextOptionsBuilder<ETicaretAPIDbContext> dbContextOptionsBuilder = new();
-            dbContextOptionsBuilder.UseNpgsql(Configuration.ConnectionString);
-            return new(dbContextOptionsBuilder.Options);
+            DbContextOptionsBuilder<ETicaretAPIDbContext> dbContextOptionsBuilder = new DbContextOptionsBuilder<ETicaretAPIDbContext>();
+            // Ensure you have the correct using directive for UseSqlServer:
+            // using Microsoft.EntityFrameworkCore;
+            dbContextOptionsBuilder.UseSqlServer(Configuration.ConnectionString); // This line should match your database provider
+            return new ETicaretAPIDbContext(dbContextOptionsBuilder.Options);
         }
+
     }
 }
