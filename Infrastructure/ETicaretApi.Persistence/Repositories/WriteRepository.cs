@@ -3,11 +3,6 @@ using ETicaretApi.Domain.Entities.Common;
 using ETicaretAPI.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETicaretApi.Persistence.Repositories
 {
@@ -46,6 +41,7 @@ namespace ETicaretApi.Persistence.Repositories
         {
             EntityEntry<T> entityEntry =  Table.Remove(model);
             return entityEntry.State == EntityState.Deleted;
+
         }
         public bool RemoveRange(List<T> datas)
         {
@@ -57,16 +53,10 @@ namespace ETicaretApi.Persistence.Repositories
         public async Task<bool> RemoveAsync(string id)
         {
             //id bazli arama yapicaz ondan sonra silicez
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             T model = await Table.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             //Table.Remove(model); bu sekilde de yapabiliriz ama yukarida remove fonksiyonu var oldugundan onu kullanmak daha guzel olur
-#pragma warning disable CS8604 // Possible null reference argument.
             return Remove(model);
-#pragma warning restore CS8604 // Possible null reference argument.
         }
-
-        
 
         public bool Update(T model)
         {
@@ -77,6 +67,16 @@ namespace ETicaretApi.Persistence.Repositories
         {
             return await _context.SaveChangesAsync();
         }
+
+
+        #region RemoveByName
+         //bunu yapamadik anlamsiz bir hata verir.
+        //public Task<bool> RemoveAsyncByName(string name)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        #endregion
+
 
         //Simdi yapilanmamiz olmasi gerekn ideal repository desingn pattern sekilde insa edilmis oldu
         //Next step : 

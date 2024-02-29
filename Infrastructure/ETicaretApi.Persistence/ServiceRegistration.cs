@@ -1,7 +1,9 @@
 ﻿using ETicaretApi.Application.Repositories;
+using ETicaretApi.Domain.Entities.Identity;
 using ETicaretApi.Persistence.Repositories;
 using ETicaretAPI.Persistence;
 using ETicaretAPI.Persistence.Contexts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -26,6 +28,26 @@ namespace ETicaretApi.Persistence
             #endregion
             //services.AddSingleton<IProductService , ProductService>();
             services.AddDbContext<ETicaretAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
+
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+            }).AddEntityFrameworkStores<ETicaretAPIDbContext>();
+
+
+            //services.AddIdentityCore<AppUser>(options =>
+            //{
+            //    options.Password.RequiredLength = 3;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireDigit = false;  
+            //    options.Password.RequireLowercase = false;  
+            //    options.Password.RequireUppercase = false;
+            //}
+            //).AddEntityFrameworkStores<ETicaretAPIDbContext>();
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
             services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();

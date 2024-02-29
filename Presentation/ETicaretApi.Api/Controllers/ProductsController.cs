@@ -1,8 +1,10 @@
-﻿using ETicaretApi.Application.Features.Commands.CreateProduct;
-using ETicaretApi.Application.Features.Queries.GetAllProduct;
+﻿using ETicaretApi.Application.Features.Commands.Product.CreateProduct;
+using ETicaretApi.Application.Features.Commands.Product.RemoveProduct;
 using ETicaretApi.Application.Features.Queries.GetAllProducts;
+using ETicaretApi.Application.Features.Queries.GetByIdProduct;
 using ETicaretApi.Application.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +12,7 @@ namespace ETicaretApi.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Admin")]
     public class ProductsController : ControllerBase
     {
         readonly private IProductWriteRepository _productWriteRepository;
@@ -31,7 +34,7 @@ namespace ETicaretApi.Api.Controllers
         }
 
         [HttpGet("GetProductById/{id}")] // Correct route definition
-        public async Task<IActionResult> GetProductById([FromRoute] string id) // Accepting string id from route
+        public async Task<IActionResult> GetByIdProductQueryRequest([FromRoute] string id) // Accepting string id from route
         {
             var getByIdProductQueryRequest = new GetByIdProductQueryRequest { Id = id }; // Using string id in request object
             GetByIdProductQueryResponse response = await _mediator.Send(getByIdProductQueryRequest);
@@ -45,5 +48,26 @@ namespace ETicaretApi.Api.Controllers
             CreateProductCommandResponse response = await _mediator.Send(createProductCommandRequest);
             return Ok(response);
         }
+
+        [HttpDelete("DeleteProductById/{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] RemoveProductCommandRequest removeProductCommandRequest)
+        {
+            RemoveProductCommandResponse response = await _mediator.Send(removeProductCommandRequest);
+            return Ok(response);
+        }
+
+
+        #region DeleteByName
+        //bunu yapamadik anlamsiz bir hata verir
+
+        //[HttpDelete("DeleteproductByName/{Name}")]
+        //public async Task<IActionResult> DeleteProductByName([FromRoute] string  name)
+        //{
+        //    var removeProductCommandRequest = new RemoveProductCommandRequest { Name = name };
+        //    RemoveProductCommandResponse response = await _mediator.Send(removeProductCommandRequest);
+        //    return Ok(response);
+        //}
+        #endregion
+
     }
 }
