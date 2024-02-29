@@ -1,10 +1,5 @@
 ﻿using ETicaretApi.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETicaretApi.Application.Repositories
 {
@@ -14,7 +9,7 @@ namespace ETicaretApi.Application.Repositories
         //IRepository temelde base tanimlamalari tutsun , yani butun repositroylerde olmasi gerekenleri tutsun ve miras versin
 
         //Irepository generic olmasi icin buraya bi <T> parametresi vericez bu <T> parametresi bir entite karsilik geliyor , ayrica <T> where : class bu <T> parametresi kural geriye class olmali biz de o sekilde tanimlamak zorundayiz
-        DbSet<T> Table {  get; } // Dbset proporty'si Table'a karsilik geliyor ve DbSette bir tek get islemi yapilir, set yapilmaz.
+        DbSet<T> Table { get; } // Dbset proporty'si Table'a karsilik geliyor ve DbSette bir tek get islemi yapilir, set yapilmaz.
 
 
     }

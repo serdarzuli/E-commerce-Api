@@ -1,13 +1,8 @@
 ﻿using ETicaretApi.Domain.Entities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETicaretApi.Application.Repositories
 {
-    public interface IWriteRepository<T> : IRepository<T> where T: BaseEntity
+    public interface IWriteRepository<T> : IRepository<T> where T : BaseEntity
     {
         //Neden bu sekilde kendimiz customization yaptik , yarin sql den non sql'e gectik diyelim burada ki somut yapilanmalar yine calisacaktir.
 
@@ -23,6 +18,12 @@ namespace ETicaretApi.Application.Repositories
         bool Remove(T model);  //remove'in asyn yapisi  yoktur bunu bilelim ve olmadigi icin Task'ada ihtayac yokturr
         bool RemoveRange(List<T> datas); //birden cok datalari silmek icin
         Task<bool> RemoveAsync(string id); //Task denildigi zaman bir asenkron islemi oldugunu biliyoruz.    burada Task ile yapiyoruz cunku db arkaplanda id'yi gordugunde asenkron bir islem olarak onu gerceklestiriyor yani bundan dolayi bizde task yaziyoruz
+
+        #region RemoveByName
+        //bunu yapamadik anlamsiz bir hata verir
+        //Task<bool> RemoveAsyncByName(string name);
+
+        #endregion
         bool Update(T model);
         Task<int> SaveAsync(); // yapilan islemlerde savechnagesi cagirabilmem icin bu fonksiyonu kullanicaz
 

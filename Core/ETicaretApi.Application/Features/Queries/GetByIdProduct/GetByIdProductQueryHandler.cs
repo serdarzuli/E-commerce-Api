@@ -1,13 +1,8 @@
 ﻿using ETicaretApi.Application.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using P = ETicaretApi.Domain.Entities;
 
-namespace ETicaretApi.Application.Features.Queries.GetAllProduct
+namespace ETicaretApi.Application.Features.Queries.GetByIdProduct
 {
     // GetAllProductQueryHandler classinda ise controllerin icersinde ki islemlere karsilik ediyor, (return'dan onceki islemlere)
     internal class GetByIdProductQueryHandler : IRequestHandler<GetByIdProductQueryRequest, GetByIdProductQueryResponse>

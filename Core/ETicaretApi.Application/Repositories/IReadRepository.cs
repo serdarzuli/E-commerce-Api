@@ -1,10 +1,5 @@
 ﻿using ETicaretApi.Domain.Entities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETicaretApi.Application.Repositories
 {
@@ -23,7 +18,7 @@ namespace ETicaretApi.Application.Repositories
         //Irepositoryden miras alacak herhangi bir entity verebilirim (product,order,customer) ama ben daha generic bir yapi istiyorum o yuzden <T> olarak veriyorum onlarca,yuzlerce entityim olabilir, bunlari Concrete katmaninda belirticem
 
         //IQueryable<T> cogul verileri icin kullanilir , Tekil veriler icin ise sadece T tanimi kullaniriz asagida ornek var.
-        IQueryable<T> GetAll(bool tracking= true);
+        IQueryable<T> GetAll(bool tracking = true);
         //IQueryable sorguda calismak istedigim icindir
         //ve bu <T> ne ? bu T paramtresi herhangi bir entity olabilir, product order customer vs.
         //GetAll() nedir , hangi entity verirsek o entitiynin nevar neyoku varsa bana getirsindir

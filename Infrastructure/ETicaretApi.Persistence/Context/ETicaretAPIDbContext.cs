@@ -1,17 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ETicaretApi.Domain.Entities;
 using ETicaretApi.Domain.Entities.Common;
+using ETicaretApi.Domain.Entities.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ETicaretAPI.Persistence.Contexts
 {
-    public class ETicaretAPIDbContext : DbContext
+    public class ETicaretAPIDbContext : IdentityDbContext<AppUser>
     {
         public ETicaretAPIDbContext(DbContextOptions options) : base(options) { } //bu benim veritabanim , ioc cointanier'a bunu ilerde tanimlatacagiz (tanimladim)
+
 
         public DbSet<Product> products { get; set; } //database diyoruz ki Product formatinda bir tablo olustur
         public DbSet<Order> orders { get; set; } //database diyoruz ki orders formatinda bir tablo olustur
@@ -32,7 +30,8 @@ namespace ETicaretAPI.Persistence.Contexts
                 _ = i.State switch
                 {
                     EntityState.Added => i.Entity.CreatedDate = DateTime.UtcNow,
-                    EntityState.Modified => i.Entity.UpdatedDate = DateTime.UtcNow
+                    EntityState.Modified => i.Entity.UpdatedDate = DateTime.UtcNow,
+                    _ => DateTime.UtcNow
                 };
            }
 
