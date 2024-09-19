@@ -11,9 +11,11 @@ namespace ETicaretAPI.Persistence.Contexts
         public ETicaretAPIDbContext(DbContextOptions options) : base(options) { } //bu benim veritabanim , ioc cointanier'a bunu ilerde tanimlatacagiz (tanimladim)
 
 
-        public DbSet<Product> products { get; set; } //database diyoruz ki Product formatinda bir tablo olustur
-        public DbSet<Order> orders { get; set; } //database diyoruz ki orders formatinda bir tablo olustur
+        public DbSet<Product> Products { get; set; } //database diyoruz ki Product formatinda bir tablo olustur
+        public DbSet<Order> Orders { get; set; } //database diyoruz ki orders formatinda bir tablo olustur
         public DbSet<Customer> customers { get; set; } //database diyoruz ki customers formatinda bir tablo olustur
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -21,7 +23,7 @@ namespace ETicaretAPI.Persistence.Contexts
             //Updated operasyonlarinda Track edilen verileri yakalayip elde etmemizi saglar. 
             //Insert)selecet) disinda track edilen herhangi bir nesneyi de yakalyabiliyoruz
 
-            // Entries surece giren girdileri buradan istedgimiz sekilde kosullara taabi tutabiliriz.
+            // Entries: surece giren girdileri buradan istedgimiz sekilde kosullara taabi tutabiliriz.
            var datas =  ChangeTracker
                         .Entries<BaseEntity>();
 

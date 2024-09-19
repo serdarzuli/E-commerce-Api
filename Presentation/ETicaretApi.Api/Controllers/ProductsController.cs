@@ -26,6 +26,7 @@ namespace ETicaretApi.Api.Controllers
             _mediator = mediator;
         }
 
+        [Authorize]
         [HttpGet("GetAllProduct")]
         public async Task<IActionResult> GetAllProducts([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {

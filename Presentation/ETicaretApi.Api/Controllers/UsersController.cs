@@ -1,12 +1,15 @@
 ﻿using ETicaretApi.Application.Features.Commands.AppUsers.CreateUser;
 using ETicaretApi.Application.Features.Commands.AppUsers.LoginUser;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETicaretApi.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class UsersController :ControllerBase
     {
         readonly IMediator _mediator;
@@ -17,6 +20,7 @@ namespace ETicaretApi.Api.Controllers
         }
 
         [HttpPost("CreateUser")]
+        [AllowAnonymous]
         public async Task <ActionResult> CreateUser(CreateUserCommandRequest createUserCommandRequest)
         {
             CreateUserCommandResponse response = await _mediator.Send(createUserCommandRequest);
@@ -24,6 +28,7 @@ namespace ETicaretApi.Api.Controllers
         }
 
         [HttpPost("[action]")] //methodun adi neyse onu alacaktir.
+        [AllowAnonymous]
         public async Task <ActionResult> Login(LoginUserCommandRequest loginUserCommandRequest)
         {
             LoginUserCommandResponse login = await _mediator.Send(loginUserCommandRequest);

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,8 +46,21 @@ namespace ETicaretApi.Infrastructure.Services.Tokens
             JwtSecurityTokenHandler securityTokenHandler = new();  //instace(object) olusturduk ve weite token methoduna erisebildik
             token.AccessToken = securityTokenHandler.WriteToken(securityToken);
 
+            token.RefreshToken = CreateRefreshToken();
+
             return token;
 
+
+        }
+
+        public string CreateRefreshToken()
+        {
+            byte[] number = new byte[32];
+            //using RandomNumberGenerator random = RandomNumberGenerator.Create(){ } eski kullanimi
+            using RandomNumberGenerator random = RandomNumberGenerator.Create(); //using nedir? using hangi {} scoupein icerisindeyse, o scouptan cikana kadar random nesenesini braindiracaktir ciktiktan sonra onu dispose edecektir.
+            //RandomNumberGenerator implementine gittigmiz zaman Idisposible oldugunu gorebillriiz
+            random.GetBytes(number);
+            return Convert.ToBase64String(number); // okunabilir degere donduruyoruz
 
         }
     }

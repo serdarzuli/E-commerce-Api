@@ -12,12 +12,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\ETicaretApi.Application\ETicaretApi.Application.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\ETicaretApi.Infrastructure\ETicaretApi.Infrastructure.csproj" />
+	  <ProjectReference Include="..\..\Infrastructure\ETicaretApi.Infrastructure\ETicaretApi.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\ETicaretApi.Persistence\ETicaretApi.Persistence.csproj" />
   </ItemGroup>
 
