@@ -12,5 +12,6 @@ namespace ETicaretApi.Application.DTOs
         //Application katmanindan presentation katmanina veri aktarmada kullanilir.
         public string AccessToken { get; set; }
         public DateTime Expiration { get; set; }
+        public string RefreshToken { get; set; }
     }
 }

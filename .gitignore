@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Presentation/ETicaretApi.Api/logs/log.txt
+/Infrastructure/ETicaretApi.Persistence/Migrations/20240917102958_update.cs
+/Infrastructure/ETicaretApi.Persistence/Migrations/20240917102958_update.Designer.cs

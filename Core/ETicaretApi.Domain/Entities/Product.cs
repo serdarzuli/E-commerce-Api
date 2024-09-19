@@ -13,6 +13,7 @@ namespace ETicaretApi.Domain.Entities
         public int Stock { get; set; }
         public long Price { get; set; }
         public ICollection<Order> Orders { get; set; } //n-n iliski Prodcuts ile Orders iliskilendirdik 
+        public ICollection<BasketItem> BasketItems { get; set; } // bu prodcut kac kere sepete eklenmis diye soru sorabiliriz, burada ki collection ile bunu halledeiyoruz
 
     }
     //entiteslerin ilk adimi prodctur
