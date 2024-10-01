@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaretApi.Api", "Presentation\ETicaretApi.Api\ETicaretApi.Api.csproj", "{C09A5802-BAF0-4F7B-B80F-E6AC42CDAFD8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalR", "SignalR", "{5950B542-D67F-4ED8-9442-865D75E06DF3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.SignalR", "ECommerce.SignalR\ECommerce.SignalR.csproj", "{836BDFCD-C3F7-44AD-929A-6E1113DEF713}"
 EndProject
 Global

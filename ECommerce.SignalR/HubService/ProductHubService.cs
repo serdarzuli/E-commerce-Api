@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.SignalR;
 using ECommerce.SignalR.Hubs;
 
 namespace ECommerce.SignalR.HubService
-
-
 {
     public class ProductHubService : IProductHubService
     {
-        readonly IHubContext<ProductHub> _hubContext;
+        readonly IHubContext<ProductHub> _hubContext; //IHubContext nereden geliyor? A: ServiceRegistration.cs de Add.SignalR(); geliyor butun referenceleri
 
         public ProductHubService(IHubContext<ProductHub> hubContext)
         {

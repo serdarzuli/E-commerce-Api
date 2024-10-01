@@ -1,7 +1,6 @@
 ﻿using ETicaretApi.Application.Features.Commands.Product.CreateProduct;
 using ETicaretApi.Application.Features.Commands.Product.RemoveProduct;
 using ETicaretApi.Application.Features.Queries.GetAllProducts;
-using ETicaretApi.Application.Features.Queries.GetByIdProduct;
 using ETicaretApi.Application.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -34,14 +33,14 @@ namespace ETicaretApi.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("GetProductById/{id}")] // Correct route definition
-        public async Task<IActionResult> GetByIdProductQueryRequest([FromRoute] string id) // Accepting string id from route
-        {
-            var getByIdProductQueryRequest = new GetByIdProductQueryRequest { Id = id }; // Using string id in request object
-            GetByIdProductQueryResponse response = await _mediator.Send(getByIdProductQueryRequest);
+        //[HttpGet("GetProductById/{id}")] // Correct route definition
+        //public async Task<IActionResult> GetByIdProductQueryRequest([FromRoute] string id) // Accepting string id from route
+        //{
+        //    var getByIdProductQueryRequest = new GetByIdProductQueryRequest { Id = id }; // Using string id in request object
+        //    GetByIdProductQueryResponse response = await _mediator.Send(getByIdProductQueryRequest);
 
-            return Ok(response);
-        }
+        //    return Ok(response);
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductCommandRequest createProductCommandRequest)
