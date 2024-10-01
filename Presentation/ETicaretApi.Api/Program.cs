@@ -8,12 +8,16 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Core;
 using System.Text;
+using ECommerce.SignalR;
+using ECommerce.SignalR.Hubs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddSignalRServices();
 //builder.Services.AddSignalR();
 
 
@@ -97,7 +101,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-//app.MapHubs(); // burada MapHubs'in icerisinde tanimlalar bulunmakta, program.cs icerisinde yapacagimiza ayri bir sinifta yaptik ki
+
+//app.MapHub<ProductHub>("...."); // burada tek tek yapacagimiza asagida
+//Configurational structers gerceklestirdik ve butun hublari ilerde ekleme cikarma olacagi zaman, MapHubs icerisinde olacak ve program.cs sade kalacak
+app.MapHubs(); // burada MapHubs'in icerisinde tanimlalar bulunmakta, program.cs icerisinde yapacagimiza ayri bir sinifta yaptik ki
 
 
 app.Run();
