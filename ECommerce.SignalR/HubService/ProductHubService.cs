@@ -6,8 +6,7 @@ namespace ECommerce.SignalR.HubService
 {
     public class ProductHubService : IProductHubService
     {
-        readonly IHubContext<ProductHub> _hubContext; //IHubContext nereden geliyor? A: ServiceRegistration.cs de Add.SignalR(); geliyor butun referenceleri
-
+        readonly IHubContext<ProductHub> _hubContext;  
         public ProductHubService(IHubContext<ProductHub> hubContext)
         {
             _hubContext = hubContext;

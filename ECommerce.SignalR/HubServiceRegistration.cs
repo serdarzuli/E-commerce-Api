@@ -11,8 +11,7 @@ namespace ECommerce.SignalR
 
     public static class HubServiceRegistration
     {
-        //Configurational structures 
-        public static void MapHubs(this WebApplication webApplication)
+                 public static void MapHubs(this WebApplication webApplication)
         {
             webApplication.MapHub<ProductHub>("/product-hub");
         }

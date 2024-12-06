@@ -15,10 +15,7 @@ namespace ETicaretAPI.Persistence
         public ETicaretAPIDbContext CreateDbContext(string[] args)
         {
             DbContextOptionsBuilder<ETicaretAPIDbContext> dbContextOptionsBuilder = new DbContextOptionsBuilder<ETicaretAPIDbContext>();
-            // Ensure you have the correct using directive for UseSqlServer:
-            // using Microsoft.EntityFrameworkCore;
-            dbContextOptionsBuilder.UseSqlServer(Configuration.ConnectionString); // This line should match your database provider
-            return new ETicaretAPIDbContext(dbContextOptionsBuilder.Options);
+                                      dbContextOptionsBuilder.UseSqlServer(Configuration.ConnectionString);              return new ETicaretAPIDbContext(dbContextOptionsBuilder.Options);
         }
 
     }

@@ -10,10 +10,7 @@ namespace ETicaretApi.Domain.Entities
 {
     public class BasketItem : BaseEntity
     {
-        //hangi urunleri tutacagini bilecek, 
-        //hangi baskete karsiligini geldigini bilecek
-        // urunlerle ilgili ekstradan bilgi tutcak kac adet, aciklma vs
-        public Guid ProductId { get; set; }
+                                   public Guid ProductId { get; set; }
         public Guid BasketId { get; set; }    
         public int Quantity { get; set; }
         public Product Product { get; set; }

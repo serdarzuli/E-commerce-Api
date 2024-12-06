@@ -27,8 +27,7 @@ namespace ETicaretApi.Api.Controllers
             return Ok(response);
         }
 
-        [HttpPost("[action]")] //methodun adi neyse onu alacaktir.
-        [AllowAnonymous]
+        [HttpPost("[action]")]          [AllowAnonymous]
         public async Task <ActionResult> Login(LoginUserCommandRequest loginUserCommandRequest)
         {
             LoginUserCommandResponse login = await _mediator.Send(loginUserCommandRequest);

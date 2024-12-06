@@ -39,8 +39,7 @@ namespace ETicaretApi.Application.Features.Commands.AppUsers.LoginUser
             }
 
             SignInResult auth = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
-            if (auth.Succeeded) //auth successed
-            {
+            if (auth.Succeeded)              {
                 Token token = _tokenHandler.CreateAccessToken(5);
 
                 return new LoginUserSuccessCommandResponse()
@@ -50,13 +49,11 @@ namespace ETicaretApi.Application.Features.Commands.AppUsers.LoginUser
 
             }
 
-            //Singel responsibility 
-            return new LoginUserErrorCommandResponse()
+                         return new LoginUserErrorCommandResponse()
             {
                 MessageError = "Token failed"
             };
 
-            //throw new Exceptions.AuthenticationErrorException();
-        }
+                     }
     }
 }

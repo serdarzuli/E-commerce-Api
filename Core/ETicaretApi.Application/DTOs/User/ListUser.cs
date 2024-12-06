@@ -11,7 +11,5 @@ namespace ETicaretApi.Application.DTOs.User
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Id { get; set; }
-        //public string NameSurname { get; set; }
-        //public bool TwoFactoredEnabled { get; set; }
-    }
+                      }
 }

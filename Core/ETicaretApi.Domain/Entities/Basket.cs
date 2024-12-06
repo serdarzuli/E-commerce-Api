@@ -11,8 +11,5 @@ namespace ETicaretApi.Domain.Entities
     public class Basket : BaseEntity
     {
         public string UsertId { get; set; }
-        public Order Order { get; set; } //1-1 bir iliski olusturduk
-        public AppUser User { get; set; } // sepeti kullanici  ile bagladik, sepetin birtane kullanicisi olabilir, AppUserin icerisine giderek Bir userin birden fazla sepeti oalbilir tanimlamasini yapalim ICollection ile
-        public ICollection<BasketItem> BasketItems { get; set; } //sebeti items ile bagladik, bir basket iciersinde birden fazla item olabilir
-    }
+        public Order Order { get; set; }          public AppUser User { get; set; }          public ICollection<BasketItem> BasketItems { get; set; }      }
 }

@@ -12,12 +12,7 @@ namespace ETicaretApi.Domain.Entities
         public string? Name { get; set; }
         public int Stock { get; set; }
         public long Price { get; set; }
-        public ICollection<Order> Orders { get; set; } //n-n iliski Prodcuts ile Orders iliskilendirdik 
-        public ICollection<BasketItem> BasketItems { get; set; } // bu prodcut kac kere sepete eklenmis diye soru sorabiliriz, burada ki collection ile bunu halledeiyoruz
-
+        public ICollection<Order> Orders { get; set; }          public ICollection<BasketItem> BasketItems { get; set; }  
     }
-    //entiteslerin ilk adimi prodctur
-
-    //Bir urunumuz var ve bu urunun Name , Stok durumu ve Fiyati var
-    // BaseEntity'den miras aldigi icin arka planda Id'si ve Date' kismida bulunmakta
-}
+     
+          }

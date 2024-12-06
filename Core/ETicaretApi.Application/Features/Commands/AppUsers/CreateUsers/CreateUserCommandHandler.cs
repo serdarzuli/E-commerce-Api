@@ -40,8 +40,7 @@ namespace ETicaretApi.Application.Features.Commands.AppUsers.CreateUser
             return response;
 
 
-            //throw new UserCreateFailedException("Failed create user");
-
+             
 
         }
 

@@ -10,7 +10,6 @@ namespace ETicaretApi.Domain.Entities
 {
     public class Customer : BaseEntity
     {
-        //1-n iliski olusturalim
-        public ICollection<Order>? Orders { get; set; }
+                 public ICollection<Order>? Orders { get; set; }
     }
 }

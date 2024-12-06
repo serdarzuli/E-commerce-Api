@@ -38,8 +38,7 @@ namespace ETicaretApi.Application.Features.Commands.AppUsers.GoogleLogin
             bool result = user != null;
             if (user == null)
             {
-                user = await _userManager.FindByEmailAsync(payload.Email); //nolur nolmaz aspnetlogins tablosunda belki kayiti yoktur ama emaili basksa ismle vardir garantiye almak icin boyle bir kosul ekliyoruz
-                if (user == null)
+                user = await _userManager.FindByEmailAsync(payload.Email);                  if (user == null)
                 {
                     user = new() 
                     { 
@@ -55,8 +54,7 @@ namespace ETicaretApi.Application.Features.Commands.AppUsers.GoogleLogin
             }
 
             if (result)
-                await _userManager.AddLoginAsync(user, userLoginInfo); //aspnetuserlogin tablosuna ekledik
-            else
+                await _userManager.AddLoginAsync(user, userLoginInfo);              else
                 throw new Exception("Invalid external authentication.");
 
             Token token =  _tokenHandler.CreateAccessToken(5);

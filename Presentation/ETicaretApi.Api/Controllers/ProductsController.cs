@@ -33,15 +33,8 @@ namespace ETicaretApi.Api.Controllers
             return Ok(response);
         }
 
-        //[HttpGet("GetProductById/{id}")] // Correct route definition
-        //public async Task<IActionResult> GetByIdProductQueryRequest([FromRoute] string id) // Accepting string id from route
-        //{
-        //    var getByIdProductQueryRequest = new GetByIdProductQueryRequest { Id = id }; // Using string id in request object
-        //    GetByIdProductQueryResponse response = await _mediator.Send(getByIdProductQueryRequest);
-
-        //    return Ok(response);
-        //}
-
+                                             
+                  
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductCommandRequest createProductCommandRequest)
         {
@@ -58,16 +51,8 @@ namespace ETicaretApi.Api.Controllers
 
 
         #region DeleteByName
-        //bunu yapamadik anlamsiz bir hata verir
-
-        //[HttpDelete("DeleteproductByName/{Name}")]
-        //public async Task<IActionResult> DeleteProductByName([FromRoute] string  name)
-        //{
-        //    var removeProductCommandRequest = new RemoveProductCommandRequest { Name = name };
-        //    RemoveProductCommandResponse response = await _mediator.Send(removeProductCommandRequest);
-        //    return Ok(response);
-        //}
-        #endregion
+         
+                                                                       #endregion
 
     }
 }

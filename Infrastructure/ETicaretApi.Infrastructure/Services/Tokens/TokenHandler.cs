@@ -12,8 +12,7 @@ using System.Threading.Tasks;
 
 namespace ETicaretApi.Infrastructure.Services.Tokens
 {
-    //concerete classtir.
-    public class TokenHandler : ITokenHandler
+         public class TokenHandler : ITokenHandler
     {
         readonly IConfiguration _configuration;
         public TokenHandler(IConfiguration configuration)
@@ -26,14 +25,12 @@ namespace ETicaretApi.Infrastructure.Services.Tokens
         {
             Token token = new Token();
 
-            //SecurityKeynin simetrigini aliyoruz
-            SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(_configuration["Token:SecurityKey"]));
+                         SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(_configuration["Token:SecurityKey"]));
 
             SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
             token.Expiration = DateTime.UtcNow.AddMinutes(minute);
-            //olusturulacak token ayarlarini veriyoruz.
-            JwtSecurityToken securityToken = new(
+                         JwtSecurityToken securityToken = new(
 
                 audience: _configuration["Token:Audience"],
                 issuer: _configuration["Token:Issuer"],
@@ -42,9 +39,7 @@ namespace ETicaretApi.Infrastructure.Services.Tokens
                 signingCredentials: signingCredentials
                 );
 
-            //Token olusturucu sinifindan tokenu olusturalim
-            JwtSecurityTokenHandler securityTokenHandler = new();  //instace(object) olusturduk ve weite token methoduna erisebildik
-            token.AccessToken = securityTokenHandler.WriteToken(securityToken);
+                         JwtSecurityTokenHandler securityTokenHandler = new();               token.AccessToken = securityTokenHandler.WriteToken(securityToken);
 
             token.RefreshToken = CreateRefreshToken();
 
@@ -56,12 +51,8 @@ namespace ETicaretApi.Infrastructure.Services.Tokens
         public string CreateRefreshToken()
         {
             byte[] number = new byte[32];
-            //using RandomNumberGenerator random = RandomNumberGenerator.Create(){ } eski kullanimi
-            using RandomNumberGenerator random = RandomNumberGenerator.Create(); //using nedir? using hangi {} scoupein icerisindeyse, o scouptan cikana kadar random nesenesini braindiracaktir ciktiktan sonra onu dispose edecektir.
-            //RandomNumberGenerator implementine gittigmiz zaman Idisposible oldugunu gorebillriiz
-            random.GetBytes(number);
-            return Convert.ToBase64String(number); // okunabilir degere donduruyoruz
-
+                         using RandomNumberGenerator random = RandomNumberGenerator.Create();                           random.GetBytes(number);
+            return Convert.ToBase64String(number);  
         }
     }
 }

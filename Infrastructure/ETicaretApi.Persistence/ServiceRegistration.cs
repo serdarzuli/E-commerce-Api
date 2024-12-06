@@ -14,20 +14,12 @@ using System.Threading.Tasks;
 
 namespace ETicaretApi.Persistence
 {
-    //Bu bir extencion metotdur
-    public static class ServiceRegistration
+         public static class ServiceRegistration
     {
-        //program.cs benim ioc container'im IServiceColection oldugundan ben de burada Dependency Injection yapmak istedigimde , aynisini kullaniyorum 
-        public static void AddPersistenceServices(this IServiceCollection services) //bu bir extantion methoddur
-        {
+                 public static void AddPersistenceServices(this IServiceCollection services)          {
             #region Aciklama
-            //services. dedigimde ilgili servislerimi burada ekleyebiliyorum
-            //Product Controller icersinde olusturmus oldugum action'a bir istek geldiginde , ben apllication katmanindan Interface'e gelecek ve burada IProduct dedigimde bana sonuc olarak Persistence katmanindaki concreten Product donecek.
-            //altaki kod yapisida, yukaridaki yapiyi gerceklestiecektir
-            //extencion metotlari biz Presentationda ki IOC container'ina erisip oraya gerekli entengrasyonlari yapiyor olucaz  
-            #endregion
-            //services.AddSingleton<IProductService , ProductService>();
-            services.AddDbContext<ETicaretAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
+                                                                #endregion
+                         services.AddDbContext<ETicaretAPIDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
 
             services.AddIdentity<AppUser, IdentityRole>(options =>
             {
@@ -39,16 +31,7 @@ namespace ETicaretApi.Persistence
             }).AddEntityFrameworkStores<ETicaretAPIDbContext>();
 
 
-            //services.AddIdentityCore<AppUser>(options =>
-            //{
-            //    options.Password.RequiredLength = 3;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //    options.Password.RequireDigit = false;  
-            //    options.Password.RequireLowercase = false;  
-            //    options.Password.RequireUppercase = false;
-            //}
-            //).AddEntityFrameworkStores<ETicaretAPIDbContext>();
-            services.AddScoped<IProductReadRepository, ProductReadRepository>();
+                                                                                                                                 services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
             services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
             services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
@@ -60,6 +43,5 @@ namespace ETicaretApi.Persistence
             services.AddScoped<IBasketItemWriteRepository, BasketItemWriteRepository>();
         }
 
-        //bu metodu tetiklemek icin program.cs'te build edicez
-    }
+             }
 }

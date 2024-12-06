@@ -8,35 +8,22 @@ namespace ETicaretAPI.Persistence.Contexts
 {
     public class ETicaretAPIDbContext : IdentityDbContext<AppUser>
     {
-        public ETicaretAPIDbContext(DbContextOptions options) : base(options) { } //bu benim veritabanim , ioc cointanier'a bunu ilerde tanimlatacagiz (tanimladim)
+        public ETicaretAPIDbContext(DbContextOptions options) : base(options) { }  
 
-
-        public DbSet<Product> Products { get; set; } //database diyoruz ki Product formatinda bir tablo olustur
-        public DbSet<Order> Orders { get; set; } //database diyoruz ki orders formatinda bir tablo olustur
-        public DbSet<Customer> Customers { get; set; } //database diyoruz ki customers formatinda bir tablo olustur
-        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<Product> Products { get; set; }          public DbSet<Order> Orders { get; set; }          public DbSet<Customer> Customers { get; set; }          public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder) //1-1 iliskiyi tanimliyorum burada 
-        {
+        protected override void OnModelCreating(ModelBuilder builder)          {
             builder.Entity<Order>().
-                HasKey(b => b.Id); //foreignkeyi tanimladm
-
+                HasKey(b => b.Id);  
             builder.Entity<Basket>()
-                .HasOne(b => b.Order) //burada basket'ten orderi aliyorum
-                .WithOne(o => o.Basket) //burada orderdan basketi aliyorum
-                .HasForeignKey<Order>(b => b.Id); // foreignkey
-
+                .HasOne(b => b.Order)                  .WithOne(o => o.Basket)                  .HasForeignKey<Order>(b => b.Id);  
             base.OnModelCreating(builder);
         }
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            //changeTracker : entitylerde yapilan degisiklerin yada yeni eklenen verinin yakalnmasini saglayan proportydir.
-            //Updated operasyonlarinda Track edilen verileri yakalayip elde etmemizi saglar. 
-            //Insert)selecet) disinda track edilen herhangi bir nesneyi de yakalyabiliyoruz
-
-            // Entries: surece giren girdileri buradan istedgimiz sekilde kosullara taabi tutabiliriz.
-           var datas =  ChangeTracker
+                                       
+                        var datas =  ChangeTracker
                         .Entries<BaseEntity>();
 
            foreach ( var i in datas)

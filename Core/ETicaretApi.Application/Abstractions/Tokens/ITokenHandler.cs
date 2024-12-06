@@ -9,8 +9,7 @@ namespace ETicaretApi.Application.Abstractions.Tokens
 {
     public interface ITokenHandler
     {
-        //Token == AccessToken == JWT hepsi ayni anlama geliyor.
-        Token CreateAccessToken(int minute);
+                 Token CreateAccessToken(int minute);
         String CreateRefreshToken();
     }
 }

@@ -14,13 +14,11 @@ using ECommerce.SignalR.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddPersistenceServices();
+ builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddSignalRServices();
-//builder.Services.AddSignalR();
-
+ 
 
 Logger log = new LoggerConfiguration()
     .WriteTo.Console()
@@ -30,10 +28,8 @@ Logger log = new LoggerConfiguration()
 builder.Host.UseSerilog(log);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-
+ builder.Services.AddEndpointsApiExplorer();
+ 
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -68,32 +64,25 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddAuthentication().AddJwtBearer();
 
 
-//Auth kisimlarini tanimlama ilk adim. ve apppsettingsin icersini zenginlestirme
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer("Admin", options =>
 {
     options.TokenValidationParameters = new()
     {
-        ValidateAudience = true, //Oluşturulacak token deðerini kimlerin/hangi originlerin/sitelerin kullanacagi belirlediðimiz deðerdir. -> www.bilmemne.com
-        ValidateIssuer = true, //Oluşturulacak token deðerini kimin daðýttýný ifade edeceðimiz alandýr. -> www.myapi.com
-        ValidateLifetime = true, //Oluþturulan token deðerinin süresini kontrol edecek olan doðrulamadýr.
-        ValidateIssuerSigningKey = true, //Üretilecek token deðerinin uygulamamýza ait bir deðer olduðunu ifade eden suciry key verisinin doðrulanmasýdýr.
-
+        ValidateAudience = true,          ValidateIssuer = true,          ValidateLifetime = true,          ValidateIssuerSigningKey = true,  
         ValidAudience = builder.Configuration["Token:Audience"],
         ValidIssuer = builder.Configuration["Token:Issuer"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"])),
         LifetimeValidator = (notBefore, expires, securityToken, validationParameters) => expires != null ? expires > DateTime.UtcNow : false,
 
-        NameClaimType = ClaimTypes.Name // JWT üzerinde Name claimne karsilik gelen deðeri User.Identity.Name propertysinden elde edebiliriz.
-
+        NameClaimType = ClaimTypes.Name  
     };
 }
 );
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -105,9 +94,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-//app.MapHub<ProductHub>("...."); // burada tek tek yapacagimiza asagida
-//Configurational structers gerceklestirdik ve butun hublari ilerde ekleme cikarma olacagi zaman, MapHubs icerisinde olacak ve program.cs sade kalacak
-app.MapHubs(); // burada MapHubs'in icerisinde tanimlalar bulunmakta, program.cs icerisinde yapacagimiza ayri bir sinifta yaptik ki
-
+  app.MapHubs();  
 
 app.Run();

@@ -4,8 +4,7 @@ using P = ETicaretApi.Domain.Entities;
 
 namespace ETicaretApi.Application.Features.Queries.GetByIdProduct
 {
-    // GetAllProductQueryHandler classinda ise controllerin icersinde ki islemlere karsilik ediyor, (return'dan onceki islemlere)
-    internal class GetByIdProductQueryHandler : IRequestHandler<GetByIdProductQueryRequest, GetByIdProductQueryResponse>
+         internal class GetByIdProductQueryHandler : IRequestHandler<GetByIdProductQueryRequest, GetByIdProductQueryResponse>
     {
 
         readonly IProductReadRepository _productReadRepository;
