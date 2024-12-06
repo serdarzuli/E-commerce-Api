@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ETicaretApi.Domain\ETicaretApi.Domain.csproj" />
+    <ProjectReference Include="..\ETicaretApi.Domain\ECommerceApi.Domain.csproj" />
   </ItemGroup>
 
 </Project>

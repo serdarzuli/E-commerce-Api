@@ -5,21 +5,21 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2CCC1F84-A10A-4451-BC4F-63D66FEBD67A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaretApi.Domain", "Core\ETicaretApi.Domain\ETicaretApi.Domain.csproj", "{B3428021-B5EE-4A34-A149-D997816AB634}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApi.Domain", "Core\ETicaretApi.Domain\ECommerceApi.Domain.csproj", "{B3428021-B5EE-4A34-A149-D997816AB634}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaretApi.Application", "Core\ETicaretApi.Application\ETicaretApi.Application.csproj", "{246AB976-5CDB-4CA8-8181-60161577690A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApi.Application", "Core\ETicaretApi.Application\ECommerceApi.Application.csproj", "{246AB976-5CDB-4CA8-8181-60161577690A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{74326CA0-02FE-4970-8BCA-5CD58AF32840}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaretApi.Infrastructure", "Infrastructure\ETicaretApi.Infrastructure\ETicaretApi.Infrastructure.csproj", "{05BFEC61-90A6-49E5-A46B-26951079F28D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApi.Infrastructure", "Infrastructure\ETicaretApi.Infrastructure\ECommerceApi.Infrastructure.csproj", "{05BFEC61-90A6-49E5-A46B-26951079F28D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaretApi.Persistence", "Infrastructure\ETicaretApi.Persistence\ETicaretApi.Persistence.csproj", "{B75A79DB-BE28-4689-B671-4D27F7FC46FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApi.Persistence", "Infrastructure\ETicaretApi.Persistence\ECommerceApi.Persistence.csproj", "{B75A79DB-BE28-4689-B671-4D27F7FC46FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F1A8A4CB-6225-4979-86E7-F8D1D0EDCD89}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaretApi.Api", "Presentation\ETicaretApi.Api\ETicaretApi.Api.csproj", "{C09A5802-BAF0-4F7B-B80F-E6AC42CDAFD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApi.Api", "Presentation\ETicaretApi.Api\ECommerceApi.Api.csproj", "{C09A5802-BAF0-4F7B-B80F-E6AC42CDAFD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.SignalR", "ECommerce.SignalR\ECommerce.SignalR.csproj", "{836BDFCD-C3F7-44AD-929A-6E1113DEF713}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.SignalR", "ECommerce.SignalR\ECommerce.SignalR.csproj", "{836BDFCD-C3F7-44AD-929A-6E1113DEF713}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
