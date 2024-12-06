@@ -364,3 +364,10 @@ FodyWeavers.xsd
 /Presentation/ETicaretApi.Api/logs/log.txt
 /Infrastructure/ETicaretApi.Persistence/Migrations/20240917102958_update.cs
 /Infrastructure/ETicaretApi.Persistence/Migrations/20240917102958_update.Designer.cs
+/Presentation/ETicaretApi.Api/logs/log.txt
+/Infrastructure/ETicaretApi.Persistence/Migrations/20241004130707_mig_3.cs
+/Infrastructure/ETicaretApi.Persistence/Migrations/20241004130707_mig_3.Designer.cs
+/Infrastructure/ETicaretApi.Persistence/Migrations/20241004131409_mig_4.cs
+/Infrastructure/ETicaretApi.Persistence/Migrations/20241004131958_mig_5.Designer.cs
+/Infrastructure/ETicaretApi.Persistence/Migrations/20241004131958_mig_5.cs
+/Infrastructure/ETicaretApi.Persistence/Migrations/20241004131409_mig_4.Designer.cs
