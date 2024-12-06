@@ -13,10 +13,22 @@ namespace ETicaretAPI.Persistence.Contexts
 
         public DbSet<Product> Products { get; set; } //database diyoruz ki Product formatinda bir tablo olustur
         public DbSet<Order> Orders { get; set; } //database diyoruz ki orders formatinda bir tablo olustur
-        public DbSet<Customer> customers { get; set; } //database diyoruz ki customers formatinda bir tablo olustur
+        public DbSet<Customer> Customers { get; set; } //database diyoruz ki customers formatinda bir tablo olustur
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder) //1-1 iliskiyi tanimliyorum burada 
+        {
+            builder.Entity<Order>().
+                HasKey(b => b.Id); //foreignkeyi tanimladm
+
+            builder.Entity<Basket>()
+                .HasOne(b => b.Order) //burada basket'ten orderi aliyorum
+                .WithOne(o => o.Basket) //burada orderdan basketi aliyorum
+                .HasForeignKey<Order>(b => b.Id); // foreignkey
+
+            base.OnModelCreating(builder);
+        }
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             //changeTracker : entitylerde yapilan degisiklerin yada yeni eklenen verinin yakalnmasini saglayan proportydir.

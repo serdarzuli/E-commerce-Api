@@ -13,8 +13,8 @@ namespace ETicaretApi.Domain.Entities
         public Guid CustomerId { get; set; } //entityframworke'a CustomerId'yi manul verdik ve o Customer ile iliskilendirecektir
         public string? Description { get; set; }
         public string? Address { get; set; }  //siparis bazli addressi belirleyebilelim diye Orderda adresi tanimladik , musterilerin tek tek adressi tutmayacagiz
-
-        public ICollection<Product>? products { get; set; } //n-n ilisli oldugu icin 
+        public Basket Basket { get; set; } //1-1 bir iliski olusturduk
+        public ICollection<Product>? Products { get; set; } //n-n ilisli oldugu icin  // iki taraftada ICollection kullandigin zamanda n-n olur
         public Customer? Customer { get; set; } //1-n iliski 
     }
 }
