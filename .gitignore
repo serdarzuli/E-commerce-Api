@@ -371,3 +371,5 @@ FodyWeavers.xsd
 /Infrastructure/ETicaretApi.Persistence/Migrations/20241004131958_mig_5.Designer.cs
 /Infrastructure/ETicaretApi.Persistence/Migrations/20241004131958_mig_5.cs
 /Infrastructure/ETicaretApi.Persistence/Migrations/20241004131409_mig_4.Designer.cs
+/Presentation/ETicaretApi.Api/logs/log.txt
+.vscode/
